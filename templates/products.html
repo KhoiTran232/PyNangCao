@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <title>Khoi Store</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style1.css') }}">
+</head>
+<body>
+    <!-- Thanh điều hướng -->
+    <header class="navbar">
+        <div class="logo">
+            <a href="{{ url_for('index') }}">
+                <img src="{{ url_for('static', filename='images/logo.png') }}" alt="Logo" />
+            </a>
+        </div>
+        <nav class="navbar">
+            <ul class="menu">
+                <li><a href="{{ url_for('new_products') }}">New & Featured</a></li>
+                <li><a href="{{ url_for('men_products') }}">Men</a></li>
+                <li><a href="{{ url_for('women_products') }}">Women</a></li>
+                <li><a href="{{ url_for('kids_products') }}">Kids</a></li>
+            </ul>
+            <div class="search-cart">
+                <input type="text" placeholder="Search" class="search-input" />
+                <button class="search-button">🔍</button>
+                <a href="{{ url_for('cart') }}" class="cart-icon">🛒</a>
+                <a href="{{ url_for('favorites') }}" class="favorites-icon">❤️</a>
+                {% if current_user.is_authenticated %}
+                    <a href="{{ url_for('dashboard') }}">
+                        <img src="{{ url_for('static', filename='images/user_icon.png') }}" class="dashboard" style="width: 24px; height: 24px;">
+                    </a>
+                {% endif %}
+            </div>
+        </nav>
+    </header>
+
+    
+    <!-- Danh sách sản phẩm -->
+    <section class="product-section">
+        <h2>New Arrivals</h2>
+        <div class="product-grid">
+            {% for product in new_product %}
+                <div class="product-card">
+                    <a href="{{ url_for('product_detail', product_id=product['id']) }}">
+                        <img src="{{ url_for('static', filename=product['image']) }}" alt="{{ product['name'] }}">
+                        <p class="product-name">{{ product['name'] }}</p>
+                        <p class="product-price">{{ product['price'] }}₫</p>
+                    </a>
+                    <a href="{{ url_for('add_to_cart', product_id=product['id']) }}" class="add-to-cart">Thêm vào giỏ hàng</a>
+                </div>
+            {% endfor %}
+        </div>
+        <h2>Men</h2>
+        <div class="product-grid">
+            {% for product in men_products %}
+                <div class="product-card">
+                    <a href="{{ url_for('product_detail', product_id=product['id']) }}">
+                        <img src="{{ url_for('static', filename=product['image']) }}" alt="{{ product['name'] }}">
+                        <p class="product-name">{{ product['name'] }}</p>
+                        <p class="product-price">{{ product['price'] }}₫</p>
+                    </a>
+                    <a href="{{ url_for('add_to_cart', product_id=product['id']) }}" class="add-to-cart">Thêm vào giỏ hàng</a>
+                </div>
+            {% endfor %}
+        </div>
+        <h2>Women</h2>
+        <div class="product-grid">
+            {% for product in women_products %}
+                <div class="product-card">
+                    <a href="{{ url_for('product_detail', product_id=product['id']) }}">
+                        <img src="{{ url_for('static', filename=product['image']) }}" alt="{{ product['name'] }}">
+                        <p class="product-name">{{ product['name'] }}</p>
+                        <p class="product-price">{{ product['price'] }}₫</p>
+                    </a>
+                    <a href="{{ url_for('add_to_cart', product_id=product['id']) }}" class="add-to-cart">Thêm vào giỏ hàng</a>
+                </div>
+            {% endfor %}
+        </div>
+        <h2>Kids</h2>
+        <div class="product-grid">
+            {% for product in kids_products %}
+                <div class="product-card">
+                    <a href="{{ url_for('product_detail', product_id=product['id']) }}">
+                        <img src="{{ url_for('static', filename=product['image']) }}" alt="{{ product['name'] }}">
+                        <p class="product-name">{{ product['name'] }}</p>
+                        <p class="product-price">{{ product['price'] }}₫</p>
+                    </a>
+                    <a href="{{ url_for('add_to_cart', product_id=product['id']) }}" class="add-to-cart">Thêm vào giỏ hàng</a>
+                </div>
+            {% endfor %}
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <h3>Về Chúng Tôi</h3>
+            <p>Chúng tôi cung cấp những sản phẩm chất lượng tốt nhất cho mọi lứa tuổi.</p>
+            <p>Khám phá bộ sưu tập mới nhất của chúng tôi để tìm kiếm những sản phẩm phù hợp nhất cho bạn.</p>
+            <h3>Liên Hệ</h3>
+            <p>Email: khoitran230204@gmail.com</p>
+            <p>Hotline: +84 332 390 280</p>
+            <h3>Kết Nối Với Chúng Tôi</h3>
+            <div class="social-links">
+                <a href="#" class="social-link">Facebook</a>
+                <a href="#" class="social-link">Instagram</a>
+                <a href="#" class="social-link">Twitter</a>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2024 Khoi Store. Đã đăng ký bản quyền.</p>
+        </div>
+    </footer>
+</body>
+</html>

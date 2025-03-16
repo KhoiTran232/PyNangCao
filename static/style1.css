@@ -1,0 +1,204 @@
+/* Reset mặc định */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+/* Căn chỉnh và bố cục chung */
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+}
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #f5f5f5;
+    padding: 10px 20px;
+}
+
+.logo img {
+    height: 50px; /* Chiều cao của logo */
+}
+
+.menu {
+    display: flex;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    justify-content: center; /* Căn giữa các mục trong menu */
+    flex-grow: 1; /* Để menu chiếm hết không gian còn lại */
+}
+
+.menu li {
+    margin: 0 15px; /* Khoảng cách giữa các mục */
+}
+
+.menu a {
+    text-decoration: none;
+    color: black;
+    font-weight: bold;
+}
+
+.menu a:hover {
+    color: #007bff; /* Màu khi hover */
+}
+
+.search-cart {
+    display: flex;
+    align-items: center;
+}
+
+.search-input {
+    padding: 5px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin-right: 10px;
+}
+
+.search-button {
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    font-size: 18px;
+    margin-right: 15px;
+}
+
+.cart-icon,
+.favorites-icon {
+    margin-left: 10px;
+    font-size: 20px;
+    text-decoration: none;
+    color: black;
+}
+
+.cart-icon:hover,
+.favorites-icon:hover {
+    color: #007bff; /* Màu khi hover */
+}
+
+/* Danh sách sản phẩm */
+.product-section {
+    padding: 40px 20px;
+    text-align: center;
+}
+
+.product-section h2 {
+    font-size: 36px;
+    margin-bottom: 20px;
+    color: #333;
+}
+
+/* Lưới sản phẩm */
+.product-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+}
+
+.product-card {
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 250px; /* Chiều rộng cố định cho mỗi sản phẩm */
+    text-align: center;
+    padding: 15px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.product-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+.product-card img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 10px;
+}
+
+.product-name {
+    font-size: 18px;
+    font-weight: bold;
+    margin: 10px 0;
+    color: #111;
+}
+
+.product-price {
+    font-size: 16px;
+    color: #28a745;
+    margin: 10px 0;
+}
+
+/* Nút thêm vào giỏ hàng */
+.add-to-cart {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #007BFF;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    text-decoration: none;
+    font-weight: bold;
+    transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.add-to-cart:hover {
+    background-color: #0056b3;
+    transform: translateY(-3px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.add-to-cart:active {
+    transform: translateY(1px);
+    box-shadow: none;
+}
+
+
+/* footer */
+.footer {
+    background-color: #fff; /* Màu nền của footer */
+    padding: 40px 20px; /* Khoảng cách bên trong */
+    text-align: center; /* Căn giữa nội dung */
+    box-shadow: 0 -2px 4px rgba(0,0,0,0.1); /* Thêm bóng nhẹ cho footer */
+}
+
+.footer-content {
+    max-width: 800px; /* Chiều rộng tối đa */
+    margin: 0 auto; /* Căn giữa */
+}
+
+.footer h3 {
+    margin-top: 20px; /* Khoảng cách phía trên */
+    color: #333; /* Màu chữ */
+}
+
+.footer p {
+    margin: 10px 0; /* Khoảng cách phía trên và dưới */
+    color: #555; /* Màu chữ nhạt hơn */
+}
+
+.social-links {
+    margin-top: 15px; /* Khoảng cách phía trên */
+}
+
+.social-link {
+    margin: 0 10px; /* Khoảng cách giữa các liên kết xã hội */
+    text-decoration: none; /* Bỏ gạch chân */
+    color: #007BFF; /* Màu xanh dương */
+    transition: color 0.3s; /* Hiệu ứng chuyển màu */
+}
+
+.social-link:hover {
+    color: #0056b3; /* Màu tối hơn khi hover */
+}
+
+.footer-bottom {
+    margin-top: 20px; /* Khoảng cách phía trên */
+    font-size: 14px; /* Kích thước chữ nhỏ hơn */
+    color: #6c757d; /* Màu chữ nhạt hơn */
+}

@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <title>Trang chủ - Khoi Store</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <script>
+        setTimeout(function() {
+            var flashMessage = document.getElementById('flash-message-container');
+            if (flashMessage) {
+                flashMessage.style.display = 'none';
+            }
+        }, 5000); // 5000 milliseconds = 5 seconds
+    </script>
+</head>
+<body>
+    {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+            <div id="flash-message-container">
+                {% for category, message in messages %}
+                    <div class="flash-message {{ category }}">{{ message }}</div>
+                {% endfor %}
+            </div>
+        {% endif %}
+    {% endwith %}
+
+    <!-- Thanh điều hướng -->
+    <header class="navbar">
+        <div class="logo">
+            <a href="{{ url_for('index') }}">
+                <img src="{{ url_for('static', filename='images/logo.png') }}" alt="Logo" />
+            </a>
+        </div>
+        <nav class="navbar">
+            <ul class="menu">
+                <li><a href="{{ url_for('new_products') }}">New & Featured</a></li>
+                <li><a href="{{ url_for('men_products') }}">Men</a></li>
+                <li><a href="{{ url_for('women_products') }}">Women</a></li>
+                <li><a href="{{ url_for('kids_products') }}">Kids</a></li>
+            </ul>
+            <div class="search-cart">
+                <input type="text" placeholder="Search" class="search-input" />
+                <button class="search-button">🔍</button>
+                <a href="{{ url_for('cart') }}" class="cart-icon">🛒</a>
+                <a href="{{ url_for('favorites') }}" class="favorites-icon">❤️</a>
+            {% if current_user.is_authenticated %}
+                <a href="{{ url_for('dashboard') }}">
+                    <img src="{{ url_for('static', filename='images/user_icon.png') }}" class="dashboard" style="width: 24px; height: 24px;">
+                </a>
+            {% endif %}
+            </div>
+        </nav>
+    </header>
+
+    <div class="scroll-text">
+        SALE UP TO 50% - COME TO US <br>
+        NOW AND GET DISCOUNT <br>
+    </div>
+
+    <!-- Banner -->
+    <section class="banner">
+        <h1>CHÀO MỪNG ĐẾN VỚI KHOI STORE</h1>
+        <p>Khám phá các sản phẩm chất lượng cao</p>
+        <a href="{{ url_for('product_list') }}" class="shop-now">Shop</a>
+    </section>
+
+    <!-- Section Featured -->
+    <section class="featured">
+        <h2>Featured</h2>
+        <div class="featured-items">
+            <div class="featured-item">
+                <div class="image-container">
+                    <a href="{{ url_for('new_products') }}">
+                        <img src="{{ url_for('static', filename='images/featured4.png') }}" alt="Men's High-Pile Fleece Jacket">
+                        <div class="overlay">
+                            <h3>Just In</h3>
+                            <p>Nike Vaporfly 3</p>
+                            <button class="shop-button">Shop</button>
+                        </div>
+                    </a>
+                </div>
+            </div>
+            <div class="featured-item">
+                <div class="image-container">
+                    <a href="{{ url_for('new_products') }}">
+                        <img src="{{ url_for('static', filename='images/featured6.png') }}" alt="Men's High-Pile Fleece Jacket">
+                        <div class="overlay">
+                            <h3>Just In</h3>
+                            <p>Nike Sportswear Premium - Men's T-Shirt</p>
+                            <button class="shop-button">Shop</button>
+                        </div>
+                    </a>
+                </div>
+            </div>
+            <div class="featured-item">
+                <div class="image-container">
+                    <a href="{{ url_for('new_products') }}">
+                        <img src="{{ url_for('static', filename='images/featured5.png') }}" alt="Men's Fleece Crew-Neck Sweatshirt">
+                        <div class="overlay">
+                            <h3>Just In</h3>
+                            <p>Jordan (Her)itage - Women's T-Shirt</p>
+                            <button class="shop-button">Shop</button>
+                        </div>
+                    </a>
+                 </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- New Arrivals -->
+    <section class="new-arrivals">
+        <h2>New Arrivals</h2>
+        <div class="featured-items">
+            {% for product in new_arrivals %}
+            <div class="featured-item">
+                <div class="image-container">
+                    <a href="{{ url_for('product_detail', product_id=product['id']) }}">
+                        <img src="{{ url_for('static', filename=product['image']) }}" alt="{{ product['name'] }}">
+                        <div class="overlay">
+                            <button class="shop-button">Xem chi tiết</button>
+                        </div>
+                    </a>
+                </div>
+                <div class="product-info">
+                    <p class="product-name">{{ product['name'] }}</p>
+                    <p class="product-price">{{ product['price'] }} VND</p>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </section>
+
+    <!-- Men -->
+    <section class="men-section">
+        <h2>Men</h2>
+        <div class="featured-items">
+            {% for product in men_products %}
+            <div class="featured-item">
+                <div class="image-container">
+                    <a href="{{ url_for('product_detail', product_id=product['id']) }}">
+                        <img src="{{ url_for('static', filename=product['image']) }}" alt="{{ product['name'] }}">
+                        <div class="overlay">
+                            <button class="shop-button">Xem chi tiết</button>
+                        </div>
+                    </a>
+                </div>
+                <div class="product-info">
+                    <p class="product-name">{{ product['name'] }}</p>
+                    <p class="product-price">{{ product['price'] }} VND</p>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </section>
+
+    <!-- Women -->
+    <section class="women-section">
+        <h2>Women</h2>
+        <div class="featured-items">
+            {% for product in women_products %}
+            <div class="featured-item">
+                <div class="image-container">
+                    <a href="{{ url_for('product_detail', product_id=product['id']) }}">
+                        <img src="{{ url_for('static', filename=product['image']) }}" alt="{{ product['name'] }}">
+                        <div class="overlay">
+                            <button class="shop-button">Xem chi tiết</button>
+                        </div>
+                    </a>
+                </div>
+                <div class="product-info">
+                    <p class="product-name">{{ product['name'] }}</p>
+                    <p class="product-price">{{ product['price'] }} VND</p>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </section>
+
+    
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <h3>Về Chúng Tôi</h3>
+            <p>Chúng tôi cung cấp những sản phẩm chất lượng tốt nhất cho mọi lứa tuổi.</p>
+            <p>Khám phá bộ sưu tập mới nhất của chúng tôi để tìm kiếm những sản phẩm phù hợp nhất cho bạn.</p>
+            <h3>Liên Hệ</h3>
+            <p>Email: khoitran230204@gmail.com</p>
+            <p>Hotline: +84 332 390 280</p>
+            <h3>Kết Nối Với Chúng Tôi</h3>
+            <div class="social-links">
+                <a href="#" class="social-link">Facebook</a>
+                <a href="#" class="social-link">Instagram</a>
+                <a href="#" class="social-link">Twitter</a>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2024 Khoi Store. Đã đăng ký bản quyền.</p>
+        </div>
+    </footer>
+</body>
+</html>

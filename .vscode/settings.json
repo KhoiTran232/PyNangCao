@@ -1,0 +1,4 @@
+{
+    "git.ignoreLimitWarning": true,
+    "github-enterprise.uri": "https://dev.azure.com"
+}

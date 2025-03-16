@@ -1,0 +1,167 @@
+/* Reset mặc định */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+/* Căn chỉnh và bố cục chung */
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+}
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #f5f5f5;
+    padding: 10px 20px;
+}
+
+.logo img {
+    height: 50px; /* Chiều cao của logo */
+}
+
+.menu {
+    display: flex;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    justify-content: center; /* Căn giữa các mục trong menu */
+    flex-grow: 1; /* Để menu chiếm hết không gian còn lại */
+}
+
+.menu li {
+    margin: 0 15px; /* Khoảng cách giữa các mục */
+}
+
+.menu a {
+    text-decoration: none;
+    color: black;
+    font-weight: bold;
+}
+
+.menu a:hover {
+    color: #007bff; /* Màu khi hover */
+}
+
+.search-cart {
+    display: flex;
+    align-items: center;
+}
+
+.search-input {
+    padding: 5px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin-right: 10px;
+}
+
+.search-button {
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    font-size: 18px;
+    margin-right: 15px;
+}
+
+.cart-icon,
+.favorites-icon {
+    margin-left: 10px;
+    font-size: 20px;
+    text-decoration: none;
+    color: black;
+}
+
+.cart-icon:hover,
+.favorites-icon:hover {
+    color: #007bff; /* Màu khi hover */
+}
+
+/* Dashboard styling */
+.dashboard {
+    padding: 20px;
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    max-width: 800px;
+    margin: 40px auto;
+    text-align: center;
+}
+
+.dashboard h2 {
+    color: #333;
+    font-size: 28px;
+    margin-bottom: 20px;
+}
+
+.dashboard p {
+    font-size: 18px;
+    color: #666;
+    margin-bottom: 20px;
+}
+
+.dashboard .dashboard-links {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+
+.dashboard .btn {
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: white;
+    text-decoration: none;
+    border-radius: 4px;
+    font-size: 16px;
+    transition: background-color 0.3s ease;
+}
+
+.dashboard .btn:hover {
+    background-color: #0056b3;
+}
+
+.flash-message {
+    background-color: #dff0d8;
+    color: #3c763d;
+    padding: 15px;
+    border-radius: 5px;
+    margin: 10px 0;
+    text-align: center;
+    font-size: 16px;
+    font-weight: bold;
+}
+.flash-message.success {
+    background-color: #d4edda;
+    color: #155724;
+}
+
+
+/* Footer styling */
+.footer {
+    background-color: #333;
+    color: white;
+    padding: 20px 0;
+    text-align: center;
+    margin-top: 200px;
+}
+
+.footer .footer-content h3, .footer .footer-content p {
+    margin: 10px 0;
+}
+
+.footer .social-links {
+    margin-top: 10px;
+}
+
+.footer .social-links a {
+    color: white;
+    text-decoration: none;
+    margin: 0 10px;
+}
+
+.footer .footer-bottom {
+    margin-top: 20px;
+}
